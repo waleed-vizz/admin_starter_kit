@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,4 +73,8 @@ Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group( 
     });
 });
 
+
+Route::get('/payment', [PaymentController::class,'payment']);
+Route::get('/success', [PaymentController::class,'success']);
+Route::get('/error', [PaymentController::class,'error']);
 
