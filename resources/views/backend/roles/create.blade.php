@@ -30,7 +30,7 @@ Role Create - Admin Panel
             </div>
         </div>
         <div class="col-sm-6 clearfix">
-            @include('backend.layouts.partials.logout')
+            @include('partials.backend.logout')
         </div>
     </div>
 </div>
@@ -43,7 +43,7 @@ Role Create - Admin Panel
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Create New Role</h4>
-                    @include('backend.layouts.partials.messages')
+                    @include('partials.backend.messages')
 
                     <form action="{{ route('admin.roles.create') }}" method="POST">
                         @csrf

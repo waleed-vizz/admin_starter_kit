@@ -38,6 +38,9 @@
                                          class="{{ Route::is('admin.roles') || Route::is('admin.roles.edit') ? 'active' : '' }}">
                                          <a href="{{ route('admin.roles') }}">All Roles</a></li>
                                  {{-- @endif --}}
+                                 <li
+                                         class="{{ Route::is('admin.permissions') || Route::is('admin.permissions.edit') ? 'active' : '' }}">
+                                         <a href="{{ route('admin.permissions') }}">All Permissions</a></li>
                                  {{-- @if ($usr->can('role.create')) --}}
                                      <li class="{{ Route::is('admin.roles.create') ? 'active' : '' }}"><a
                                              href="{{ route('admin.roles.create') }}">Create Role</a></li>

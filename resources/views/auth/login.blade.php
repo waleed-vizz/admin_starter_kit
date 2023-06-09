@@ -6,7 +6,7 @@
 
 @section('auth-content')
      <!-- login area start -->
-     <div class="login-area">
+     <div class="login-area" style="background-image: url('{{ asset('backend/assets/images/bg/brown-high-skyscrapers.jpg') }}'); background-repeat:no-repeat; background-position:center; background-size:cover; background-attachment:fixed;">
         <div class="container">
             <div class="login-box ptb--100">
                 <form method="POST" action="{{ route('login') }}">

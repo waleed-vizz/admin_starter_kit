@@ -6,9 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,9 @@ Route::controller(AuthController::class)->middleware(RedirectIfAuthenticated::cl
     Route::post('register','register');
 });
 
-
+Route::get('/profile', function(){
+return view('backend.users.profile');
+})->name('profile')->middleware(Authenticate::class);
 
 
 Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group( function () {
@@ -59,6 +62,15 @@ Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group( 
         Route::get('/role/update/{role}', 'edit')->name('roles.update');
         Route::post('/role/update/{role}', 'update');
         Route::get('/role/delete/{role}', 'destroy')->name('roles.delete');
+
+    });
+    Route::controller(PermissionController::class)->group(function (){
+        Route::get('/permissions', 'index')->name('permissions');
+        Route::get('/permissions/create', 'create')->name('permissions.create');
+        Route::post('/permissions/create', 'store');
+        Route::get('/permission/update/{permission}', 'edit')->name('permissions.update');
+        Route::post('/permission/update/{permission}', 'update');
+        Route::get('/permission/delete/{permission}', 'destroy')->name('permissions.delete');
 
     });
 

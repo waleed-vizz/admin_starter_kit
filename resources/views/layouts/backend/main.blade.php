@@ -7,6 +7,11 @@
     <title>@yield('title', 'Laravel Role Admin')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.backend.styles')
+    <style>
+        .page-title-area:before{
+            background:rgb(240, 240, 240) !important;
+        }
+    </style>
     @yield('styles')
 </head>
 

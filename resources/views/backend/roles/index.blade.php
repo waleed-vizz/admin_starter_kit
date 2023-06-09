@@ -1,5 +1,5 @@
 
-@extends('backend.layouts.master')
+@extends('layouts.backend.main')
 
 @section('title')
 Role Page - Admin Panel
@@ -29,7 +29,7 @@ Role Page - Admin Panel
             </div>
         </div>
         <div class="col-sm-6 clearfix">
-            @include('backend.layouts.partials.logout')
+            @include('partials.backend.logout')
         </div>
     </div>
 </div>
@@ -43,13 +43,13 @@ Role Page - Admin Panel
                 <div class="card-body">
                     <h4 class="header-title float-left">Roles List</h4>
                     <p class="float-right mb-2">
-                        @if (Auth::guard('admin')->user()->can('role.create'))
+                        {{-- @if (Auth::guard('admin')->user()->can('role.create')) --}}
                             <a class="btn btn-primary text-white" href="{{ route('admin.roles.create') }}">Create New Role</a>
-                        @endif
+                        {{-- @endif --}}
                     </p>
                     <div class="clearfix"></div>
                     <div class="data-tables">
-                        @include('backend.layouts.partials.messages')
+                        @include('partials.backend.messages')
                         <table id="dataTable" class="text-center">
                             <thead class="bg-light text-capitalize">
                                 <tr>
@@ -72,15 +72,15 @@ Role Page - Admin Panel
                                         @endforeach
                                     </td>
                                     <td>
-                                        @if (Auth::guard('admin')->user()->can('admin.edit'))
+                                        {{-- @if (Auth::guard('admin')->user()->can('admin.edit')) --}}
                                             <a class="btn btn-success text-white" href="{{ route('admin.roles.update', $role->id) }}">Edit</a>
-                                        @endif
+                                        {{-- @endif --}}
 
-                                        @if (Auth::guard('admin')->user()->can('admin.edit'))
+                                        {{-- @if (Auth::guard('admin')->user()->can('admin.edit')) --}}
                                             <a class="btn btn-danger text-white" href="{{ route('admin.roles.delete', $role) }}">
                                                 Delete
                                             </a>
-                                        @endif
+                                        {{-- @endif --}}
                                     </td>
                                 </tr>
                                @endforeach
