@@ -24,7 +24,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('backend.roles.create');
+        $permissions = Permission::all();
+
+        return view('backend.roles.create', compact('permissions'));
     }
 
     /**
@@ -32,6 +34,27 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:roles,name',
+        ]);
+        
+        if(!count($request->permissions)){
+            return redirect()->back()->with('error', 'You must atlest choose one permission.');
+        }
+        $role = Role::create([
+            'name' => $request->name,
+        ]);
+
+        $permissions = $request->permissions;
+
+        foreach ($permissions as $permission) {
+            // dd($permission);
+            $permission = Permission::findOrCreate($permission);
+            $role->givePermissionTo($permission);
+        }
+        
+        return redirect()->back()->with('success', 'Role created Successfully');
+
     }
 
     /**

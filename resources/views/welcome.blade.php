@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
 
         <!-- Styles -->
         <style>
@@ -117,6 +118,7 @@
                         </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#chatModal">Open Chat</button>
 
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                     <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
@@ -136,5 +138,12 @@
                 </div>
             </div>
         </div>
+
+        @include('partials.chat')
+
+
+        <!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

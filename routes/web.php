@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\AdminDashboardController;
+use Spatie\Permission\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +56,7 @@ Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group( 
         Route::get('/', 'index')->name('dashboard');
     });
 
-    Route::controller(RoleController::class)->group(function (){
+    Route::controller(RoleController::class)->middleware('permission:manage roles and permissions')->group(function (){
         Route::get('/roles', 'index')->name('roles');
         Route::get('/roles/create', 'create')->name('roles.create');
         Route::post('/roles/create', 'store');
@@ -64,7 +65,7 @@ Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group( 
         Route::get('/role/delete/{role}', 'destroy')->name('roles.delete');
 
     });
-    Route::controller(PermissionController::class)->group(function (){
+    Route::controller(PermissionController::class)->middleware('permission:manage roles and permissions')->group(function (){
         Route::get('/permissions', 'index')->name('permissions');
         Route::get('/permissions/create', 'create')->name('permissions.create');
         Route::post('/permissions/create', 'store');
@@ -84,6 +85,12 @@ Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group( 
 
     });
 });
+
+
+
+
+
+
 
 
 Route::get('/payment', [PaymentController::class,'payment']);
