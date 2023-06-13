@@ -1,5 +1,5 @@
 
-@extends('layouts.backend.main')
+@extends('layouts.new')
 
 @section('title')
 Users - Admin Panel
@@ -17,15 +17,11 @@ Users - Admin Panel
 @section('admin-content')
 
 <!-- page title area start -->
-<div class="page-title-area">
+<div class="page-title-area"  style="padding: 15px;">
     <div class="row align-items-center">
         <div class="col-sm-6">
             <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">Users</h4>
-                <ul class="breadcrumbs pull-left">
-                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li><span>All Users</span></li>
-                </ul>
+                <h2 class="page-title pull-left">Users</h2>
             </div>
         </div>
         <div class="col-sm-6 clearfix">

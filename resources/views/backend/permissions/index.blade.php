@@ -1,5 +1,5 @@
 
-@extends('layouts.backend.main')
+@extends('layouts.new')
 
 @section('title')
 permission Page - Admin Panel
@@ -13,7 +13,7 @@ permission Page - Admin Panel
 @section('admin-content')
 
 <!-- page title area start -->
-<div class="page-title-area">
+<div class="page-title-area" style="padding: 15px;">
     <div class="row align-items-center">
         <div class="col-sm-6">
             <div class="breadcrumbs-area clearfix">

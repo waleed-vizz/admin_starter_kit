@@ -18,6 +18,12 @@
         <!-- profile info & task notification -->
         <div class="col-md-6 col-sm-4 clearfix">
             <ul class="notification-area pull-right">
+                <li class="nav-item dropdown">
+                    <select class="form-select changeLang">
+                        <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
+                        <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>Arabic</option>
+                    </select>
+                </li>
                 <li id="full-view"><i class="ti-fullscreen"></i></li>
                 <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                 <li class="dropdown">
@@ -84,12 +90,12 @@
                         <img src="{{ asset('backend/assets/images/author/icons8-user-64.png') }}" class="rounded-circle" alt="">
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}">Log Out</a>
+                            <a class="dropdown-item" href="{{ route('profile') }}">{{ GoogleTranslate::trans('Profile', app()->getLocale()) }}</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}">{{ GoogleTranslate::trans('Log Out', app()->getLocale()) }}</a>
                         </div>
                 </li>
             </ul>
-            
+
         </div>
     </div>
 </div>

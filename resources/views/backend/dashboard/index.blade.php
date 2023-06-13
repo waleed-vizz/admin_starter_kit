@@ -1,72 +1,61 @@
+@extends('layouts.new')
 
-@extends('layouts.backend.main')
-
-@section('title')
-Dashboard Page - Admin Panel
-@endsection
+@section('title', 'Dashboard')
+    {{-- {{ GoogleTranslate::trans('Dashboard Page - Admin Panel', app()->getLocale()) }}
+@endsection --}}
 
 
 @section('admin-content')
 
-<!-- page title area start -->
-<div class="page-title-area">
-    <div class="row align-items-center">
-        <div class="col-sm-6">
-            <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">Dashboard</h4>
-                <ul class="breadcrumbs pull-left">
-                    <li><a href="index.html">Home</a></li>
-                    <li><span>Dashboard</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-6 clearfix">
-            @include('partials.backend.logout')
-        </div>
-    </div>
-</div>
-<!-- page title area end -->
-
-<div class="main-content-inner">
-  <div class="row">
-    <div class="col-lg-8">
+    <div class="main-content-inner" style="padding: 13px;">
         <div class="row">
-            <div class="col-md-6 mt-5 mb-3">
-                <div class="card">
-                    <div class="seo-fact sbg1">
-                        <a href="{{ route('admin.roles') }}">
-                            <div class="p-4 d-flex justify-content-between align-items-center">
-                                <div class="seofct-icon"><i class="fa fa-users"></i> Roles</div>
-                                <h2>{{ $total_roles }}</h2>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-6 mt-5 mb-3">
+                        <div class="card">
+                            <div class="seo-fact sbg1">
+                                <a href="{{ route('admin.roles') }}">
+                                    <div class="p-4 d-flex justify-content-between align-items-center">
+                                        <div class="seofct-icon"><i
+                                                class="fa fa-users"></i>{{ GoogleTranslate::trans('Roles', app()->getLocale()) }}
+                                        </div>
+                                        <h2>{{ $total_roles }}</h2>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6 mt-md-5 mb-3">
-                <div class="card">
-                    <div class="seo-fact sbg2">
-                        <a href="{{ route('admin.users') }}">
-                            <div class="p-4 d-flex justify-content-between align-items-center">
-                                <div class="seofct-icon"><i class="fa fa-user"></i> Admins</div>
-                                <h2>{{ $total_admins }}</h2>
+                    <div class="col-md-6 mt-md-5 mb-3">
+                        <div class="card">
+                            <div class="seo-fact sbg2">
+                                <a href="{{ route('admin.users') }}">
+                                    <div class="p-4 d-flex justify-content-between align-items-center">
+                                        <div class="seofct-icon"><i
+                                                class="fa fa-user"></i>{{ GoogleTranslate::trans('Admins', app()->getLocale()) }}
+                                        </div>
+                                        <h2>{{ $total_admins }}</h2>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-3 mb-lg-0">
-                <div class="card">
-                    <div class="seo-fact sbg3">
-                        <div class="p-4 d-flex justify-content-between align-items-center">
-                            <div class="seofct-icon">Permissions</div>
-                            <h2>{{ $total_permissions }}</h2>
+                    <div class="col-md-6 mb-3 mb-lg-0">
+                        <div class="card">
+                            <div class="seo-fact sbg3">
+                                <div class="p-4 d-flex justify-content-between align-items-center">
+                                    <div class="seofct-icon">{{ GoogleTranslate::trans('Permissions', app()->getLocale()) }}
+                                    </div>
+                                    <h2>{{ $total_permissions }}</h2>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </div>
-</div>
+    <button type="button" class="btn btn-primary btn-rounded position-fixed bottom-1"
+        style="bottom: 115px; margin-left:95%;padding: 21px 17px!important;" data-toggle="modal" data-target="#exampleModal"
+        data-whatever="">{{ GoogleTranslate::trans('Chat', app()->getLocale()) }}</button>
 @endsection

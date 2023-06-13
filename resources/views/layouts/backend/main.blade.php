@@ -35,6 +35,7 @@
             @yield('admin-content')
         </div>
         <!-- main content area end -->
+        @include('partials.chat')
         @include('partials.backend.footer')
     </div>
     <!-- page container area end -->
