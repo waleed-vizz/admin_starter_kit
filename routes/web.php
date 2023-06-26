@@ -1,6 +1,12 @@
 <?php
 
+use App\Models\User;
+use App\Models\Message;
+use App\Events\TestEvent;
+use App\Mail\WelcomeEmail;
+use App\Mail\HelloWorldEmail;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -15,7 +21,6 @@ use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\AdminDashboardController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,23 +40,47 @@ Route::controller(HomeController::class)->middleware(Authenticate::class)->group
     Route::get('/home', 'home')->name('home');
 });
 
+// Auth Routes::
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware(Authenticate::class);
 
-Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware(Authenticate::class);
+    Route::controller(AuthController::class)->middleware(RedirectIfAuthenticated::class)->group(function () {
+
+        Route::get('login', 'view')->name('login');
+        Route::post('/login', 'login');
 
 
-Route::controller(AuthController::class)->middleware(RedirectIfAuthenticated::class)->group(function () {
+        Route::get('register', 'create')->name('register');
+        Route::post('register', 'register');
+    });
 
-    Route::get('login', 'view')->name('login');
-    Route::post('/login', 'login');
+// End Auth Routes::
 
 
-    Route::get('register', 'create')->name('register');
-    Route::post('register', 'register');
-});
+
+
+
+
+
 
 Route::get('/profile', function () {
     return view('backend.users.profile');
-})->name('profile')->middleware(Authenticate::class);
+})->name('profile');
+
+
+
+
+
+// ->middleware('verified')
+
+
+
+
+
+
+
+
+
+
 
 
 Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group(function () {
@@ -89,7 +118,18 @@ Route::prefix('admin')->name('admin.')->middleware(Authenticate::class)->group(f
 
 
 
-Route::get('/message', [NewsLetterController::class, 'subscribe']);
+Route::get('/message', function () {
+    $data = [
+        'sender_id' => 5,
+        'receiver_id' => 4,
+        'message' => 'hello event 2',
+
+    ];
+
+    $message = Message::create($data);
+
+
+});
 
 // Route::get('/test/{lang}', function($lang){
 //     //  dd($lang);
@@ -108,7 +148,15 @@ Route::get('/scrap', [MessageController::class, 'scrap']);
 Route::get('lang/home', [LanguageController::class, 'index']);
 Route::get('lang/change', [LanguageController::class, 'change'])->name('changeLang');
 
+Route::get('/email', function(){
 
+    try {
+        Mail::to('kwalee86@gmail.com')->send(new HelloWorldEmail());
+        dd('email sent successfully');
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+    }
+});
 
 Route::get('/new-layout', function () {
     return view('layouts.new');

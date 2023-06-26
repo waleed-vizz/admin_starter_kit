@@ -1,4 +1,4 @@
-@extends('layouts.backend.main')
+@extends('layouts.new')
 
 @section('title', 'Profile Page')
 {{-- @include('partials.backend.logout') --}}

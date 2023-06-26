@@ -50,7 +50,7 @@ class UserController extends Controller
             $user->assignRole($request->roles);
         }
 
-        return redirect()->route('admin.users.index')->with('success', 'User has been created !!');
+        return redirect()->route('admin.users')->with('success', 'User has been created !!');
     }
 
     /**

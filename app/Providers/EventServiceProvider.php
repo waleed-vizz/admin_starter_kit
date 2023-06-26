@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\UserSubscribed;
+use App\Models\Message;
+use App\Observers\MessageObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -24,7 +26,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserSubscribed::class => [
             SubscriptionMessage::class,
-        ]
+        ],
+        TestEvent::class => [
+            Test::class,
+        ],
     ];
 
     /**
@@ -32,7 +37,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Message::observe(MessageObserver::class);
     }
 
     /**
