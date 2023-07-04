@@ -33,10 +33,10 @@ class LanguageController extends Controller
      *
      * @return \Illuminate\Http\Response
     */
-    public function change(Request $request)
+    public function change($lang)
     {
-        App::setLocale($request->lang);
-        session()->put('locale', $request->lang);
+        App::setLocale($lang);
+        session()->put('locale', $lang);
 
         return redirect()->back();
     }

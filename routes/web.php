@@ -67,7 +67,7 @@ Route::get('/profile', function () {
 })->name('profile');
 
 
-
+Route::get('user-notify', [UserController::class, 'birthday_wish']);
 
 
 // ->middleware('verified')
@@ -135,7 +135,7 @@ Route::get('/message', function () {
 //     //  dd($lang);
 // })->name('lang.switch');
 
-Route::get('/test/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
+Route::get('/test/{lang}', [LanguageController::class, 'change'])->name('lang.switch');
 
 Route::get('/languageDemo', 'App\Http\Controllers\HomeController@languageDemo');
 
@@ -146,7 +146,7 @@ Route::get('/error', [PaymentController::class, 'error']);
 Route::get('/scrap', [MessageController::class, 'scrap']);
 
 Route::get('lang/home', [LanguageController::class, 'index']);
-Route::get('lang/change', [LanguageController::class, 'change'])->name('changeLang');
+Route::get('lang/change/{lang}', [LanguageController::class, 'change'])->name('changeLang');
 
 Route::get('/email', function(){
 

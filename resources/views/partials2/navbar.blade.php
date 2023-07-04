@@ -56,7 +56,7 @@
         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="alertsDropdown">
             <h6 class="dropdown-header">
-                Alerts Center
+                {{ trans('Alerts Center') }}
             </h6>
             <a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="mr-3">
@@ -65,8 +65,8 @@
                     </div>
                 </div>
                 <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                    <div class="small text-gray-500">{{ trans('December') }} {{ trans('12') }}, {{ trans('2019') }}</div>
+                    <span class="font-weight-bold"> {{ trans('A') }} {{ trans('new') }} {{ trans('monthly') }} {{ trans('report') }} {{ trans('is') }} {{ trans('ready') }} {{ trans('to') }} {{ trans('download!') }}</span>
                 </div>
             </a>
             <a class="dropdown-item d-flex align-items-center" href="#">
@@ -76,8 +76,8 @@
                     </div>
                 </div>
                 <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
+                    <div class="small text-gray-500">{{ trans('December 7, 2019') }}</div>
+                    {{ trans('$290.29 has been deposited into your account!') }}
                 </div>
             </a>
             <a class="dropdown-item d-flex align-items-center" href="#">
@@ -167,12 +167,12 @@
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="langDropdown">
 
             @if (session()->get('locale') == 'en')
-                <a class="dropdown-item" href="{{ route('changeLang') }}?lang=ar">
-                    Arabic
+                <a class="dropdown-item" href="{{ route('changeLang', ['lang' => 'ar']) }}">
+                    {{ trans('Arabic') }}
                 </a>
             @else
-                <a class="dropdown-item" href="{{ route('changeLang') }}?lang=en">
-                    English
+                <a class="dropdown-item" href="{{ route('changeLang', ['lang' => 'en']) }}">
+                    {{ trans('English') }}
                 </a>
             @endif
 

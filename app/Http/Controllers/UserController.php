@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Notifications\BirthdayWish;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -12,6 +13,20 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function birthday_wish(){
+        $user = User::find(2);
+
+        $messages["hi"] = "Hey, Happy Birthday {$user->name}";
+        $messages["wish"] = "On behalf of the entire company I wish you a very happy birthday and send you my best wishes for much happiness in your life.";
+
+        $user->notify(new BirthdayWish($messages));
+
+        dd('Done');
+    }
+
+
+
     public function index()
     {
         $users = User::all();

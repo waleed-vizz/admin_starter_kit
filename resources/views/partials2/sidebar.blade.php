@@ -1,11 +1,11 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Admin</div>
+        <div class="sidebar-brand-text mx-3">{{ trans('Admin') }}</div>
     </a>
 
     <!-- Divider -->
@@ -15,7 +15,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>{{ trans('Dashboard') }}</span></a>
     </li>
 
     <!-- Divider -->
@@ -23,7 +23,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Roles & Permissions
+        {{ trans('Roles & Permissions') }}
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -31,7 +31,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.roles') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Roles</span></a>
+                <span>{{ trans('Roles') }}</span></a>
         </li>
     @endcan
 
@@ -39,7 +39,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.permissions') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Permissions</span></a>
+                <span>{{ trans('Permissions') }}</span></a>
         </li>
     @endcan
 
@@ -67,7 +67,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Users
+        {{ trans('Users') }}
     </div>
 
     <!-- Nav Item -  -->
@@ -75,7 +75,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.users') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Users</span></a>
+                <span>{{ trans('Users') }}</span></a>
         </li>
     @endcan
 
